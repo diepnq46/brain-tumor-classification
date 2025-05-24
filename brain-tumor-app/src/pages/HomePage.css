@@ -1,0 +1,26 @@
+/* Đảm bảo các style khác trong HomePage.css không bị ảnh hưởng */
+.home-page {
+  padding: 20px;
+}
+
+.header-image img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+}
+
+.introduction {
+  margin: 20px 0;
+}
+
+.introduction h3 {
+  margin-top: 20px;
+  color: #333;
+}
+
+/* Thêm style để thụt lề các thẻ <p> */
+.introduction p {
+  margin-left: 20px; /* Thụt lề trái 20px */
+  line-height: 1.6; /* Tăng khoảng cách dòng cho dễ đọc */
+  margin-bottom: 15px; /* Khoảng cách dưới mỗi đoạn */
+}
