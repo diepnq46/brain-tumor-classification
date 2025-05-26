@@ -78,15 +78,31 @@ const UploadPage = ({ token }) => {
                     <input
                         type="file"
                         className="form-control mt-2"
-                        onChange={e => setImage(e.target.files[0])}
+                        onChange={e => {
+                            const file = e.target.files[0];
+                            if (file && file.type.match('image.*')) {
+                                setImage(file); // Lưu file vào state image
+                            } else {
+                                setImage(null);
+                                alert('Vui lòng chọn file ảnh hợp lệ (jpg, png)!');
+                            }
+                        }}
                         required
                     />
                     <span className="text-danger">*</span> {/* Dấu * màu đỏ */}
                     <span className="ms-1 small">Vui lòng cung cấp hình ảnh có chất lượng tốt nhất để đạt được độ chính xác cao nhất</span> {/* Chữ màu đen */}
-
+                    {image && (
+                        <div className="mt-2">
+                            <img
+                                src={URL.createObjectURL(image)}
+                                alt="Preview"
+                                style={{ maxWidth: '200px', maxHeight: '200px' }} // Giới hạn kích thước preview
+                            />
+                        </div>
+                    )}
                 </div>
                 <button type="submit" className="btn btn-primary">
-                    Upload
+                    Dự đoán
                 </button>
             </form>
         </div>
